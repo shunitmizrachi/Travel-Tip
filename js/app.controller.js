@@ -58,3 +58,6 @@ function onSearch(ev) {
     const elInputSearch = document.querySelector('input[name=search]');
     console.log(elInputSearch.value)
 }
+
+
+

@@ -20,6 +20,28 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             })
             console.log('Map!', gMap);
         })
+        .then(() => {
+            var infoWindow = new google.maps.InfoWindow({
+                content: "Click the map to get Lat/Lng!",
+                position: { lat, lng }
+            });
+            infoWindow.open(gMap);
+      
+        gMap.addListener("click", (mapsMouseEvent) => {
+            // Close the current InfoWindow.
+            infoWindow.close();
+            // Create a new InfoWindow.
+            infoWindow = new google.maps.InfoWindow({
+              position: mapsMouseEvent.latLng,
+            });
+            infoWindow.setContent(
+              JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+            );
+            infoWindow.open(gMap);
+          });
+        })
+       
+
 }
 
 function addMarker(loc) {
