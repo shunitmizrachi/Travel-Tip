@@ -34,7 +34,7 @@ function onAddMarker() {
 function onGetLocs() {
     locService.getLocs()
         .then(locs => {
-            console.log('Locations:', locs)
+            // console.log('Locations:', locs)
             // document.querySelector('.locs').innerText = JSON.stringify(locs)
             renderLocs(locs)
         })
@@ -82,8 +82,10 @@ function onPanTo() {
 
 function onSearch(ev) {
     if (ev) ev.preventDefault();
-    const elInputSearch = document.querySelector('input[name=search]');
-    console.log(elInputSearch.value)
+    const searchValue = document.querySelector('input[name=search]').value;
+    console.log(searchValue)
+    locService.getSearchLocation(searchValue)
+    .then ((locs) => mapService.panTo(locs.lat, locs.lng))
 }
 
 
