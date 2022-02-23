@@ -7,10 +7,12 @@ export const locService = {
     deleteLoc,
 }
 
+const KEY = 'locsDB'
 
-const locs = [
-    { name: 'Greatplace', lat: 32.047104, lng: 34.832384 }, 
-    { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
+
+const locs = storageService.load(KEY) || [
+    { id: 'aU15', name: 'Greatplace', lat: 32.047104, lng: 34.832384 }, 
+    { id: 'Ev97', name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
 ]
 
 function getLocs() {
@@ -24,17 +26,20 @@ function getLocs() {
 
 function addLoc(name, lat, lng) {
     var loc = {
-        id: makeId(),
+        id: utilService.makeId(),
         name: '',
         lat: '',
         lng: '',
     }
 
     locs.push(loc)
+    storageService.save(KEY, locs)
+
 }
 
 
 function deleteLoc(id) {
     var deleteLocIdx = locs.findIndex((loc) => loc.id === id)
     locs.splice(deleteLocIdx, 1)
+    storageService.save(KEY, locs)
 }
