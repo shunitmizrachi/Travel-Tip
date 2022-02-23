@@ -19,3 +19,13 @@ function getLocs() {
 }
 
 
+function addLoc() {
+    var loc = {
+        id: makeId(),
+        name: '',
+        lat: '',
+        lng: '',
+    }
+}
+
+
