@@ -39,9 +39,23 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             );
             infoWindow.open(gMap);
           });
-        })
-       
 
+        })
+        .then(() => {
+            gMap.addListener('click', ({ latLng }) => {
+                const name = prompt('Give name')
+                const pos = {
+                    name,
+                    coords: {
+                        lat: latLng.lat(),
+                        lng: latLng.lng()
+                    }
+                }
+                onAddPlace(pos)
+                renderPlaces()
+                gMap.setCenter(pos.coords);
+            })
+        })
 }
 
 function addMarker(loc) {
@@ -73,3 +87,9 @@ function _connectGoogleApi() {
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
+
+
+
+
+
+  
