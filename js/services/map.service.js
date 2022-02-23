@@ -39,7 +39,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             );
             infoWindow.open(gMap);
           });
-<<<<<<< HEAD
 
         })
         .then(() => {
@@ -56,8 +55,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 renderPlaces()
                 gMap.setCenter(pos.coords);
             })
-=======
->>>>>>> 3ea957e52bb44b7f6cedd98c9608f504803f247b
         })
 }
 
