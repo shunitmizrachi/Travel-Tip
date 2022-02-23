@@ -5,6 +5,7 @@ export const locService = {
     getLocs,
     addLoc,
     deleteLoc,
+    getSearchLocation
 }
 
 const KEY = 'locsDB'
@@ -42,4 +43,10 @@ function deleteLoc(id) {
     var deleteLocIdx = locs.findIndex((loc) => loc.id === id)
     locs.splice(deleteLocIdx, 1)
     storageService.save(KEY, locs)
+}
+
+function getSearchLocation(value){
+    const GEO_API_KEY = 'AIzaSyAIywOXkhdxDt533AX9FL_CCNhCAptnsJU'
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${value}&key=${GEO_API_KEY}`)
+    .then(res => res.data.results[0].geometry.location)
 }
