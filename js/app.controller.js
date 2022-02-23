@@ -2,6 +2,7 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
 window.onload = onInit;
+window.onSearch = onSearch;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
@@ -50,4 +51,10 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
+}
+
+function onSearch(ev) {
+    if (ev) ev.preventDefault();
+    const elInputSearch = document.querySelector('input[name=search]');
+    console.log(elInputSearch.value)
 }
