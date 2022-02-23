@@ -8,6 +8,7 @@ window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onDeleteLoc = onDeleteLoc;
+window.onGoLocation = onGoLocation;
 
 function onInit() {
     mapService.initMap()
@@ -48,7 +49,7 @@ function renderLocs(locs) {
         <td>${loc.name}</td>
         <td>${loc.lat}</td>
         <td>${loc.lng}</td>
-        <td><button onclick="">Go</button></td>
+        <td><button onclick="onGoLocation(${loc.lat}, ${loc.lng})">Go</button></td>
         <td><button onclick="onDeleteLoc('${loc.id}')">Delete</button></td>
     </tr>`
     })
@@ -85,6 +86,10 @@ function onSearch(ev) {
     console.log(searchValue)
     locService.getSearchLocation(searchValue)
     .then ((locs) => mapService.panTo(locs.lat, locs.lng))
+}
+
+function onGoLocation(lat, lng){
+    mapService.panTo(lat, lng)
 }
 
 
