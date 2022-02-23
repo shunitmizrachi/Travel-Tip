@@ -63,15 +63,10 @@ onGetLocs()
 
 }
 
-
-
-
-
-
-
 function onGetUserPos() {
     getPosition()
         .then(pos => {
+            mapService.initMap(pos.coords.latitude, pos.coords.longitude)
             console.log('User position is:', pos.coords);
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
