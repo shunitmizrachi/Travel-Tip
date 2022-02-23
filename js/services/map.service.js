@@ -3,7 +3,8 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    getMap
 }
 
 var gMap;
@@ -20,43 +21,27 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             })
             console.log('Map!', gMap);
         })
-        .then(() => {
-            var infoWindow = new google.maps.InfoWindow({
-                content: "Click the map to get Lat/Lng!",
-                position: { lat, lng }
-            });
-            infoWindow.open(gMap);
+        // .then(() => {
+        //     var infoWindow = new google.maps.InfoWindow({
+        //         content: "Click the map to get Lat/Lng!",
+        //         position: { lat, lng }
+        //     });
+        //     infoWindow.open(gMap);
       
-        gMap.addListener("click", (mapsMouseEvent) => {
-            // Close the current InfoWindow.
-            infoWindow.close();
-            // Create a new InfoWindow.
-            infoWindow = new google.maps.InfoWindow({
-              position: mapsMouseEvent.latLng,
-            });
-            infoWindow.setContent(
-              JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-            );
-            infoWindow.open(gMap);
-          });
+        // gMap.addListener("click", (mapsMouseEvent) => {
+        //     // Close the current InfoWindow.
+        //     infoWindow.close();
+        //     // Create a new InfoWindow.
+        //     infoWindow = new google.maps.InfoWindow({
+        //       position: mapsMouseEvent.latLng,
+        //     });
+        //     infoWindow.setContent(
+        //       JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+        //     );
+        //     infoWindow.open(gMap);
+        //   });
 
-        })
-        .then(() => {
-            gMap.addListener('click', ({ latLng }) => {
-                const name = prompt('Give name')
-                const pos = {
-                    name,
-                    coords: {
-                        lat: latLng.lat(),
-                        lng: latLng.lng()
-                    }
-                }
-                // onAddPlace(pos)
-                // renderPlaces()
-                gMap.setCenter(pos.coords);
-                console.log(pos)
-            })
-        })
+        // })
 }
 
 
@@ -92,7 +77,9 @@ function _connectGoogleApi() {
 }
 
 
-
+function getMap() {
+    return gMap
+}
 
 
   

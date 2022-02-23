@@ -14,9 +14,12 @@ function onInit() {
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
+            onClickMap()
         })
         .catch(() => console.log('Error: cannot init map'));
         onGetLocs()
+       
+        
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -93,4 +96,25 @@ function onGoLocation(lat, lng){
 }
 
 
+function onClickMap() {
+    var map = mapService.getMap()
+    
+    map.addListener('click', ({ latLng }) => {
+        const name = prompt('Give name')
+        const pos = {
+            name,
+            coords: {
+                lat: latLng.lat(),
+                lng: latLng.lng()
+            }
+        }
+        onAddLoc(pos)
+        map.setCenter(pos.coords);
+        console.log(pos)
+    })
+}
 
+function onAddLoc(pos) {
+    locService.addLoc(pos.name, pos.coords.lat, pos.coords.lng)
+    onGetLocs()
+}

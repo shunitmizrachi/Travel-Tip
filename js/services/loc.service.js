@@ -28,9 +28,9 @@ function getLocs() {
 function addLoc(name, lat, lng) {
     var loc = {
         id: utilService.makeId(),
-        name: '',
-        lat: '',
-        lng: '',
+        name,
+        lat,
+        lng,
     }
 
     locs.push(loc)
