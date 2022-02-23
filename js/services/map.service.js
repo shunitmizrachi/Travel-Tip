@@ -51,9 +51,10 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                         lng: latLng.lng()
                     }
                 }
-                onAddPlace(pos)
-                renderPlaces()
+                // onAddPlace(pos)
+                // renderPlaces()
                 gMap.setCenter(pos.coords);
+                console.log(pos)
             })
         })
 }
