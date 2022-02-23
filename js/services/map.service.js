@@ -52,7 +52,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                     }
                 }
                 onAddPlace(pos)
-                renderPlaces()
                 gMap.setCenter(pos.coords);
             })
         })

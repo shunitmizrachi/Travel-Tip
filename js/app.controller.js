@@ -60,7 +60,6 @@ function onDeleteLoc(locationId) {
 console.log(locationId)
 locService.deleteLoc(locationId)
 onGetLocs()
-
 }
 
 function onGetUserPos() {
@@ -87,7 +86,6 @@ function onSearch(ev) {
     locService.getSearchLocation(searchValue)
     .then ((locs) => mapService.panTo(locs.lat, locs.lng))
 }
-
 
 
 
