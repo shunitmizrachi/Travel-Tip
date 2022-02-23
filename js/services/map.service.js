@@ -51,8 +51,12 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                         lng: latLng.lng()
                     }
                 }
+<<<<<<< HEAD
                 // onAddPlace(pos)
                 // renderPlaces()
+=======
+                onAddPlace(pos)
+>>>>>>> e2c23182072388379ee3e83214ed6ece21f20f37
                 gMap.setCenter(pos.coords);
                 console.log(pos)
             })
