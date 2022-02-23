@@ -1,5 +1,11 @@
 'use strict'
 
+export const utilService = {
+    makeId
+}
+
+
+
 function makeId(length = 4) {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var txt = '';
